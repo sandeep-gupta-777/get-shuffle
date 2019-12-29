@@ -36,8 +36,9 @@
   }
 }
 .modal-content {
-  height: 75vh;
-  width: 65vw;
+  //height: 75vh;
+  width: 64vw;
+  overflow: auto;
   display: flex;
   outline: none;
   background: white;
@@ -51,10 +52,18 @@
     flex-shrink: 0;
     transition: all .5s;
     .item{
-      height: 75vh;
-      width: 65vw;
+
       display: flex;
       flex-shrink: 0;
+      @media screen and (max-width: 900px) {
+        height: 55vh;
+        width: 64vw;
+        overflow: auto;
+      }
+      @media screen and (min-width: 900px) {
+        height: 75vh;
+        width: 65vw;
+      }
     }
   }
 
