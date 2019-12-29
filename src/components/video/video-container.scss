@@ -1,0 +1,215 @@
+.modal-content-wrapper{
+  position: relative;
+  outline: none;
+  .modal-control {
+    position: absolute;
+
+    svg {
+      color: white;
+      cursor: pointer;
+    }
+
+  }
+  .modal-control-close {
+    top: -30px;
+    right: 0;
+  }
+
+  .modal-control-left {
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+
+    svg {
+      font-size: 42px;
+    }
+  }
+
+  .modal-control-right {
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+
+    svg {
+      font-size: 42px;
+    }
+  }
+}
+.modal-content {
+  height: 75vh;
+  width: 65vw;
+  display: flex;
+  outline: none;
+  background: white;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+
+  .modal-content-inner {
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+    transition: all .5s;
+    .item{
+      height: 75vh;
+      width: 65vw;
+      display: flex;
+      flex-shrink: 0;
+    }
+  }
+
+
+  .overlay {
+    .title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 58px;
+      @media screen and (max-width: 1100px) {
+        font-size: 42px;
+      }
+      line-height: 69px;
+      color: #d5d5d5;
+    }
+
+    .play-icon {
+      svg {
+        font-size: 96px !important;
+      }
+    }
+
+    .intro {
+      .title {
+        line-height: 32px !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .comment-card {
+    height: 100%;
+
+    .MuiPaper-root {
+      height: 100%;
+      max-width: unset;
+
+      .card-media-image {
+        padding-top: 0;
+        height: 100%;
+        background-image: url('http://localhost:3000/highlight.png');
+        background-size: cover;
+
+        img {
+          opacity: 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+
+  .video-content {
+    width: 60%;
+    height: 100%;
+    flex-shrink: 0;
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .right {
+    padding: 22px;
+    width: 100%;
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .user-name {
+        color: #000000;
+        font-weight: 600;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+      }
+
+      .count {
+        margin-left: auto;
+        color: #888888;
+        font-weight: bold;
+      }
+    }
+
+    .comment-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .comment-count {
+        color: #888888;
+        padding-right: 10px;
+        flex-shrink: 0;
+        font-weight: bold;
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+
+      hr {
+        flex: 1;
+      }
+    }
+
+    .comment-item {
+      margin-bottom: 18px;
+
+      .comment-text {
+        font-size: 14px;
+        margin: 0px 0;
+      }
+
+      .user-tag {
+        color: #F12710;
+      }
+
+      .intro {
+        display: flex;
+        align-items: center;
+
+        img {
+          margin-right: 8px;
+          width: 20px;
+          height: 20px;
+        }
+
+        .MuiTypography-subtitle1 {
+          font-size: 14px;
+          margin-right: 8px;
+        }
+
+        .date {
+          font-size: 12px;
+          line-height: 20px;
+          color: #888888;
+        }
+      }
+
+      .comment-info {
+        display: flex;
+        color: #888888;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+
+        svg {
+          font-size: 12px;
+          margin-top: 2px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

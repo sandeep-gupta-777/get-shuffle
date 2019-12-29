@@ -1,0 +1,64 @@
+.audio-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media screen and (max-width: 900px) {
+    .MuiGrid-root {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .audio-thumbnail {
+    //max-height: 200px;
+    display: inline-flex;
+    justify-content: center;
+    @media screen and (max-width: 900px) {
+      box-shadow: 0px 41px 1180px #f443368f;
+      background-color: transparent;
+      img {
+        max-width: 150px;
+      }
+    }
+    @media screen and (min-width: 900px) {
+      box-shadow: 250px 0px 200px rgba(244, 67, 54, 0.32), 0px 0px 200px rgba(244, 67, 54, 0.22);
+      min-height: 250px;
+      min-width: 250px;
+    }
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    @media screen and (max-width: 900px) {
+      align-items: center;
+    }
+
+    .host-name {
+      color: #888888;
+      font-size: 12px;
+    }
+
+    .podcast-title {
+      font-size: 36px;
+      line-height: 52px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .podcast-episode {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: bold;
+    }
+  }
+}

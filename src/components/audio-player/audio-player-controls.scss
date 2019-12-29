@@ -1,0 +1,344 @@
+.audio-controls {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.control-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
+
+  .play-button {
+    font-size: 44px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .control-speed {
+    position: absolute;
+    right: 30px;
+  }
+}
+
+.mode-normal {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  @media screen and (max-width: 900px) {
+    grid-template-areas: ". ." "slider slider" ". controls" ". controls";
+    .play-button-lg{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 900px) {
+    grid-template-areas: "play ." "play slider" "play controls" ". controls";
+
+  }
+
+  .play-button-lg {
+    grid-area: play;
+    align-self: center;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 50px;
+    }
+  }
+
+  .audio-slider {
+    grid-area: slider;
+    margin-top: -5px;
+  }
+
+  .control-wrapper {
+    grid-area: controls;
+  }
+
+  .control-wrapper-lg {
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+    grid-area: controls;
+    display: flex;
+
+    .MuiChip-sizeSmall {
+      height: 20px;
+      font-size: 11px;
+    }
+
+    & > * {
+      margin-right: 10px;
+    }
+
+    svg {
+      opacity: 0.5;
+      font-size: 20px;
+    }
+
+    .control-time {
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  }
+}
+
+.fix-on-top {
+  .mode-normal {
+    opacity: 0;
+  }
+
+  .mode-fix {
+    opacity: 1 !important;
+    animation: appear-mild .4s forwards;
+  }
+
+
+}
+
+.MuiSlider-markLabel {
+  right: 0;
+  opacity: 0.5;
+  /*
+  Overriding the default positions and size of the markers
+  */
+  top: -5px !important;
+  transform: none !important;
+  left: unset !important;
+  color: #444444 !important;
+  font-size: 12px !important;
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
+
+  &.MuiSlider-markLabelActive {
+    color: rgba(0, 0, 0, 0.54);
+    right: unset;
+    left: 0 !important;
+  }
+}
+
+.MuiSlider-mark {
+  display: none;
+}
+
+.audio-slider {
+  margin-bottom: -30px; /*to compensate for additional gutter slider comes with*/
+}
+
+
+.mode-fix {
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background: white;
+
+  .audio-slider {
+    margin: 0 !important;
+    display: flex;
+  }
+
+  @mixin control-container-xs {
+    grid-template-columns: 70px 1fr 60px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "play title controls" "play title controls";
+  }
+
+  @mixin control-container-lg {
+    grid-template-columns: 70px 230px 1fr 300px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "thumbnail title play-big control-big" "thumbnail title play-big control-big";
+
+    .controls {
+      display: none !important;
+    }
+
+    .play {
+      display: none !important;
+    }
+
+    .control-big {
+      grid-area: control-big;
+      display: flex;
+      align-items: center;
+
+      .control-volume {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    .play-big {
+      align-self: center;
+      grid-area: play-big;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .play-big-container {
+        display: flex;
+        align-items: center;
+
+        & > * {
+          margin-right: 20px;
+        }
+
+        .MuiChip-label {
+          opacity: .5;
+        }
+      }
+
+      .time {
+        font-size: 10px;
+        color: #444444;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .control-container {
+    display: grid;
+    height: 62px;
+    padding: 0 10px;
+    z-index: 1000;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.08));
+
+    @media only screen and (max-width: 900px) {
+      @include control-container-xs();
+      .thumbnail {
+        display: none !important;
+      }
+      .play-big {
+        display: none;
+      }
+      .control-big {
+        display: none !important;
+      }
+    }
+    @media only screen and (min-width: 900px) {
+      @include control-container-lg();
+    }
+
+    .thumbnail {
+      grid-area: thumbnail;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .play {
+      grid-area: play;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title {
+      grid-area: title;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .title {
+        font-weight: 500;
+      }
+
+      .number {
+        font-size: 11px;
+      }
+    }
+
+    .number {
+      grid-area: number;
+    }
+
+    .controls {
+      grid-area: controls;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      svg {
+        cursor: pointer;
+      }
+    }
+
+    .controls {
+      grid-area: controls;
+    }
+
+    .play {
+      grid-area: play;
+    }
+
+    .play-button {
+      font-size: 55px;
+      grid-area: play;
+    }
+
+    .replay-button {
+      margin-right: 7px;
+    }
+
+    .intro {
+      margin-left: 10px;
+
+      .title {
+        font-weight: 500;
+      }
+
+      margin-right: auto;
+    }
+  }
+
+  .MuiSlider-root {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+}
+
+@keyframes appear-mild {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.audio-player-wrapper {
+  padding: 10% 5%;
+  margin: -10% -5%;
+  position: relative;
+  max-width: 800px;
+
+  .audio-player-img {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,26 @@
+.transcript-details-header {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+
+  .transcript-details-header-title {
+    color: #000000;
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .transcript-details-header-current {
+    .MuiChip-root {
+        background-color: black;
+        color: white;
+    }
+  }
+}
+
+.text-label {
+  margin-right: 5px;
+}

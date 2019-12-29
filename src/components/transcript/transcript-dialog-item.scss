@@ -1,0 +1,19 @@
+.transcript-dialog-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .transcript-dialog-item-speaker {
+    display: inline-flex;
+    font-weight: bold;
+  }
+
+  .MuiChip-label {
+    color: #888888;
+  }
+
+  .transcript-dialog-item-dialog {
+    color: #888888;
+    font-size: 13px;
+    display: inline;
+  }
+}
