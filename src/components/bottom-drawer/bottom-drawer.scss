@@ -8,6 +8,9 @@
     position: absolute;
     z-index: 2;
     top: 50%;
+    @media screen and (max-width: 500px) {
+      display: none !important;
+    }
   }
 
   .control-left {
@@ -28,6 +31,10 @@
   .card-carousal-inner {
     display: flex;
     transition: all .8s;
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      overflow: auto;
+    }
   }
 
   .item {
