@@ -6,7 +6,7 @@ DEMO: https://get-shuffle.netlify.com/
 
 ##### Getting started
 1. Clone the project
-2. run `npm i && npm start`
+2. run `npm i && npm start`t
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

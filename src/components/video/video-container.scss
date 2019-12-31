@@ -1,6 +1,19 @@
-.modal-content-wrapper{
+.modal-overall-wrapper {
+  @media screen and (min-width: 500px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0 !important;
+  }
+  @media screen and (max-width: 500px) {
+    top: 68px !important;
+  }
+}
+
+.modal-content-wrapper {
   position: relative;
   outline: none;
+
   .modal-control {
     position: absolute;
 
@@ -10,6 +23,7 @@
     }
 
   }
+
   .modal-control-close {
     top: -30px;
     right: 0;
@@ -35,13 +49,12 @@
     }
   }
 }
+
 .modal-content {
   //height: 75vh;
   width: 64vw;
-  overflow: auto;
   display: flex;
   outline: none;
-  background: white;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
@@ -51,16 +64,12 @@
     width: 100%;
     flex-shrink: 0;
     transition: all .5s;
-    .item{
+
+    .item {
 
       display: flex;
       flex-shrink: 0;
-      @media screen and (max-width: 900px) {
-        height: 55vh;
-        width: 64vw;
-        overflow: auto;
-      }
-      @media screen and (min-width: 900px) {
+      @media screen and (min-width: 500px) {
         height: 75vh;
         width: 65vw;
       }
@@ -121,7 +130,7 @@
     width: 60%;
     height: 100%;
     flex-shrink: 0;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (min-width: 501px) and (max-width: 900px) {
       display: none;
     }
   }
@@ -129,21 +138,38 @@
   .right {
     padding: 22px;
     width: 100%;
+    background-color: white;
 
-    .row {
+    .right-row {
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .user-name {
-        color: #000000;
-        font-weight: 600;
+      .right-header {
+        width: 100%;
+
+        .title-row {
+          display: flex;
+          align-items: center;
+
+          .user-name {
+            color: #000000;
+            font-weight: 600;
+            margin-right: auto;
+          }
+        }
+      }
+
+      .right-row-controls {
+        display: none;
       }
 
       img {
         width: 40px;
         height: 40px;
-        margin-right: 5px;
+        margin-right: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
       }
 
       .count {
@@ -192,6 +218,7 @@
           margin-right: 8px;
           width: 20px;
           height: 20px;
+          border-radius: 50%;
         }
 
         .MuiTypography-subtitle1 {
@@ -221,4 +248,88 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 500px) {
+  .MuiBackdrop-root {
+    background-color: transparent !important;
+  }
+  .modal-content-wrapper {
+    height: 100%;
+    overflow: hidden;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+
+    .modal-control {
+      display: none;
+    }
+
+    .modal-content {
+      width: 100% !important;
+      height: 100%;
+
+      .video-content {
+        width: 100% !important;
+        height: 70%;
+        flex-grow: 0;
+        margin-top: 115px
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        background-color: #444444;
+        color: white;
+        overflow-y: auto;
+
+        height: 100%;
+        width: 100% !important;
+
+
+        .right {
+          width: 90%;
+          background-color: #444444;
+
+          .right-header {
+            width: 100%;
+          }
+
+          .right-row {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background-color: #444444;
+            padding: 5px 0px;
+
+            .title-row {
+              display: flex;
+              padding: 0 20px;
+              align-items: center;
+            }
+
+            .right-row-controls {
+              display: flex;
+              align-self: center;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+              margin-bottom: 10px;
+
+              .drawerHeader-title {
+                margin-right: auto;
+                display: flex;
+                align-items: center;
+              }
+            }
+
+            .user-name {
+              color: white;
+              margin-right: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }

@@ -35,8 +35,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function HighlightCard({highlights, highlight, hideFooter, isModal}) {
+export default function HighlightCard(props) {
 
+    let {highlights, highlight, hideFooter, isModal, closeDrawerFn} = props;
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [open, setOpen] = React.useState(false);
@@ -59,7 +60,7 @@ export default function HighlightCard({highlights, highlight, hideFooter, isModa
 
     return (
         <div className="comment-card">
-            {open ? <TransitionsModal highlights={highlights} closeFn={modalCloseHandler}  open={open}/> : ''}
+            {open ? <TransitionsModal highlights={highlights} closeDrawerFn={closeDrawerFn} closeFn={modalCloseHandler}  open={open}/> : ''}
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}

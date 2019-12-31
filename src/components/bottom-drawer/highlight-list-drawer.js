@@ -80,19 +80,20 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 let resizeHandlerAttached = false;
-
+let count = 0;
+let stepCount = 0;
 export function HighlightListDrawer({highlights}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     let carousalWidth = 200;
-    let stepCount = 0;
+
     const myRef = React.createRef();
     const showLeft = React.createRef();
     const showRight = React.createRef();
     let $showLeft;
     let $showRight;
     let carouselContainer;
-    let count = 0;
+
     let itemToShow = 0;
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -102,8 +103,7 @@ export function HighlightListDrawer({highlights}) {
         setOpen(false);
     };
     const resizeHandler = () => {
-        initializeCarousalVar();
-        checkControlVisibility();
+        moveCarousel(null, true);
     };
     if (!resizeHandlerAttached) {
         window.addEventListener('resize', resizeHandler);
@@ -141,9 +141,12 @@ export function HighlightListDrawer({highlights}) {
         }
     }
 
-    const moveCarousel = (arg) => {
+    const moveCarousel = (arg, reset = false) => {
 
-        carouselContainer = myRef.current;
+        carouselContainer = carouselContainer || myRef.current;
+        if(!carouselContainer){
+            return;
+        }
         $showLeft = showLeft.current;
         $showRight = showRight.current;
         initializeCarousalVar();
@@ -155,7 +158,15 @@ export function HighlightListDrawer({highlights}) {
         stepCount = stepCount + arg;
         carousalWidth = length;
         const offset = (carousalWidth + 16) * stepCount;
-        if (stepCount * -1 <= count - itemToShow) {
+        if (reset === true) {
+            carouselContainer.style.transform = `translateX(0px)`;
+            $showLeft = carouselContainer.parentElement.querySelector('.control-right');
+            $showRight = carouselContainer.parentElement.querySelector('.control-left');
+            // $showLeft.style.display = "none";
+            stepCount = 0;
+            // count = 0;
+        }
+        else if (stepCount * -1 <= count - itemToShow) {
             carouselContainer.style.transform = `translateX(${offset}px)`;
         }
         setTimeout(() => {
@@ -224,6 +235,7 @@ export function HighlightListDrawer({highlights}) {
                                         <div
                                             key={highlight.key}
                                             className="item"><HighlightCard highlights={highlights}
+                                                                            closeDrawerFn={handleDrawerClose}
                                                                             highlight={highlight}/></div>
                                     )
                                 })
